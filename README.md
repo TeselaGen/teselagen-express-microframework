@@ -26,7 +26,7 @@ You can look into `test.js` file and check how setup options are implemented.
 
 To import this MicroFramework in your project, run:
 
-(not available yet in npm)
+(npm not available yet)
 
 ```
 yarn add teselagen-express-microframework
@@ -120,7 +120,7 @@ In the future will be adding libraries to the following stack implementation:
 - [x] Logger (winston + morgan)
 - [x] DotEnv
 
-### Security (not full implemented):
+### Security:
 - [x] Helmet
 - [x] Cors
 - [ ] Others (...add more security libraries to this list)
@@ -128,3 +128,8 @@ In the future will be adding libraries to the following stack implementation:
 ### Database connectors:
 - [ ] GraphQL
 - [ ] ORM (TypeORM, others)
+
+### Test Suite
+- [ ] Mocha
+- [ ] Chai
+- [ ] CodeCov
