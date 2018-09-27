@@ -1,6 +1,6 @@
 {
   "name": "teselagen-express-microframework",
-  "version": "0.0.12",
+  "version": "0.0.1",
   "description": "Express microframework with useful tools",
   "files": [
     "index.js",
@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sh create_env_file.sh && node test.js"
+    "start": "node test.js",
+    "install": "sh create_env_file.sh"
   },
   "author": "",
   "license": "ISC",
