@@ -1,3 +1,7 @@
+const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
+const bodyParser = require('body-parser');
+
 const get = require('lodash/get');
 const has = require('lodash/has');
 const chalk = require('chalk');
@@ -8,6 +12,7 @@ const cors = require('../security/cors');
 const helmet = require('../security/helmet');
 const routes = require('../routes');
 const print = require('../print');
+const errors = require('../errors');
 
 const env = require('./env');
 
@@ -16,15 +21,29 @@ const env = require('./env');
  */
 const setupExpress = (express, app, options) => {
   console.info(' Starting express configuration:\n');
+  
+  // Add body parser
+  app.use(bodyParser.urlencoded({ extended: false }));
+  
   // add security tier
   cors(app);
   helmet(app);
+  app.use(cookieParser());
+  app.use(csrf({ cookie: true }));
 
   // add logger
   if (env.logger.enabled) logger(app);
 
   // add info routes
-  app.use('/info', routes.infoRoutes(express));
+  app.use('/info', routes.infoRoutes(express));  
+
+  // error handler
+  app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+
+    // handle CSRF token errors here
+    return errors.error403(res);
+  });
 
   const baseApi = env.app.base_endpoint;
 

@@ -14,7 +14,27 @@ const MicroFramework = require('./src');
  * @param {*} res
  */
 const helloworld = (req, res) => {
-  res.status(200).send('hello world');
+  res.status(200).send(`
+    <h1>CSRF Security Test</h1>
+    <form action="/api/hellopost" method="POST">
+      <div>
+        <label for="message">Enter a message</label>
+        <input id="message" name="message" type="text" />
+      </div>
+      <input type="submit" value="Submit" />
+      <input type="hidden" name="_csrf" value="${req.csrfToken()}" />
+    </form>
+  `);
+};
+
+const hellopost = (req, res) => {
+  res
+    .status(200)
+    .send(
+      `hello token ${req.body._csrf}, message received: ${
+        req.body.message
+      }`
+    );
 };
 
 const foo = (req, res) => {
@@ -36,8 +56,8 @@ const routes = [
   },
   {
     method: 'post',
-    name: 'hello-world',
-    handler: helloworld,
+    name: 'hellopost',
+    handler: hellopost,
   },
   {
     method: 'get',
