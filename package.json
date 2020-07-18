@@ -29,7 +29,7 @@
     "graphql": "^14.0.2",
     "graphql-server-express": "^1.4.0",
     "graphql-tag": "^2.9.2",
-    "graphql-tools": "^4.0.0",
+    "graphql-tools": "^6.0.14",
     "helmet": "^3.13.0",
     "lodash": "^4.17.11",
     "morgan": "^1.9.1",
