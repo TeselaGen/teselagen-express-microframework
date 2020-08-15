@@ -31,7 +31,7 @@
     "graphql-tag": "^2.9.2",
     "graphql-tools": "^4.0.0",
     "helmet": "^3.13.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.20",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
