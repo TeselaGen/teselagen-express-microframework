@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: friday
+    time: "19:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: passport-saml
+    versions:
+    - 2.0.4
+    - 2.0.5
+    - 2.1.0
+  - dependency-name: graphql-tools
+    versions:
+    - 7.0.2
+    - 7.0.3
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
